@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<head>
+	<meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<meta charset="UTF-8" />
+	<title><?php
+			if (isset($judul_page)) {
+				echo $judul_page;
+			}
+			?></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+	<link rel="stylesheet" href="stylesheets/style.css">
+	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/superfish.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body>
+	<div id="page">
+
+		<header id="header">
+			<div class="container clearfix">
+				<div id="logo-wrap">
+					<h1 id="logo"><a href="index.php"><img width="110px" height="auto" src="images/SPK.png" alt=""></a></h1>
+					<h3><font color="black" face="Cooper Black">METODE ARAS</font></h3>
+				</div>
+				<div id="header-content" class="clearfix">
+					<nav id="nav">
+						<ul class="sf-menu">
+						<?php $user_role = get_role(); ?>
+							<?php if ($user_role == 'admin') : ?>
+								<li><a href="list-user.php">User</a>
+									<ul>
+										<li><a href="list-user.php">List User</a></li>
+										<li><a href="tambah-user.php">Tambah User</a></li>
+									</ul>
+								</li>
+								<li><a href="list-kriteria.php">Kriteria</a>
+									<ul>
+										<li><a href="list-kriteria.php">List Kriteria</a></li>
+										<li><a href="tambah-kriteria.php">Tambah Kriteria</a></li>
+									</ul>
+								</li>
+								<?php endif; ?>
+							<?php if ($user_role == 'admin' || $user_role == 'petugas') : ?>
+								<li><a href="list-alternatif.php">Alternatif</a>
+									<ul>
+										<li><a href="list-alternatif.php">List Alternatif</a></li>
+										<li><a href="tambah-alternatif.php">Tambah Alternatif</a></li>
+									</ul>
+								</li>
+								<li><a href="ranking-aras.php">Hasil Akhir</a>
+								</li>
+								<?php endif; ?>
+						</ul>
+					</nav>
+					<div id="header-right">
+						<?php if (isset($_SESSION['user_id'])) : ?>
+							<a href="logout.php" class="button">Log Out</a>
+						<?php else : ?>
+							<a href="login.php" class="button">Log In</a>
+							<a href="daftar.php" class="button">Daftar</a>
+						<?php endif; ?>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<div id="main">
+	
